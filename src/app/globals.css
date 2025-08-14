@@ -1,7 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@tailwind utilities;
 
-@custom-variant dark (&:is(.dark *));
+/* @layer utilities {
+  .dark {
+    &:is(.dark *){}
+  }
+} */
+/* @custom-variant dark (&:is(.dark *)); */
 
 @theme inline {
   --color-background: var(--background);
@@ -119,4 +125,41 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-geist-sans), var(--font-indie-flower);
+  /* background-color: theme('colors.gray.100'); */
+  @apply transition-colors duration-500 ease-in-out;
+}
+
+.card-glow {
+  position: relative;
+  border-radius: 1rem;                    /* 对应 rounded-2xl */
+  background: oklch(0.1 0 0 / 0.6);       /* 深色毛玻璃 */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);    /* 兼容 Safari */
+  border: 1px solid oklch(1 0 0 / 10%);
+  box-shadow: 0 0 24px oklch(0.6 0.08 250 / 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, oklch(0.6 0.2 250), oklch(0.6 0.2 350), oklch(0.6 0.2 250));
+  filter: blur(10px);
+  opacity: 0.2;
+  z-index: -1;
+  animation: card-glow-move 10s linear infinite;
+}
+
+@keyframes card-glow-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

@@ -1,0 +1,70 @@
+.starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+/* 
+  - 星星的载体——使用伪元素 ::before 和 ::after
+  - 将星星(box-shadow)附加到一个极小的元素上,所有的星星都是这个小元素的 box-shadow
+*/
+.starfield::before,
+.starfield::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px; 
+  background: transparent;
+  border-radius: 50%;
+  animation: animate-stars 50s linear infinite;
+}
+
+/* 小星星 */
+
+.starfield::before {
+  animation-duration: 50s;
+  box-shadow: 
+    738px 938px #FFF, 159px 505px #FFF, 381px 413px #FFF, 891px 95px #FFF, 225px 33px #FFF,
+    471px 379px #FFF, 437px 432px #FFF, 360px 886px #FFF, 816px 453px #FFF, 45px 560px #FFF,
+    882px 587px #FFF, 809px 83px #FFF, 100px 100px #FFF, 1200px 800px #FFF, 950px 300px #FFF,
+    131px 508px #FFF, 582px 832px #FFF, 936px 49px #FFF, 62px 250px #FFF, 898px 235px #FFF,
+    89px 528px #FFF, 878px 843px #FFF, 521px 897px #FFF, 10px 10px #FFF, 1100px 200px #FFF,
+    400px 600px #FFF, 45px 560px #FFF, 882px 587px #FFF, 809px 83px #FFF, 100px 100px #FFF,
+    1200px 800px #FFF, 950px 300px #FFF, 200px 750px #FFF;
+}
+
+/* 大星星 */
+/* 大星星移动得慢，产生视差效果 */
+
+.starfield::after {
+  animation-duration: 100s; 
+  box-shadow:
+    236px 329px #FFF, 342px 758px #FFF, 483px 38px #FFF, 549px 529px #FFF, 1200px 50px #FFF,
+    200px 750px #FFF, 738px 938px #FFF, 159px 505px #FFF, 381px 413px #FFF, 891px 95px #FFF, 
+    225px 33px #FFF, 471px 379px #FFF, 437px 432px #FFF, 360px 886px #FFF, 816px 453px #FFF,
+    800px 450px #FFF, 1400px 900px #FFF;
+}
+
+
+/*
+  - translateY 的值需要大于等于星星分布的高度范围，确保星星能完全划出屏幕
+  - 为实现无缝循环，需要在动画结束后，将元素重置回原始位置之上，继续下落
+*/
+
+@keyframes animate-stars {
+  from {
+    transform: translateY(-1000px);
+  }
+  to {
+    transform: translateY(1000px);
+  }
+}
+
