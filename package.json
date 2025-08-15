@@ -24,6 +24,7 @@
     "velite": "^0.2.4"
   },
   "devDependencies": {
+    "@csstools/postcss-oklab-function": "^4.0.10",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
