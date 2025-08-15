@@ -144,6 +144,7 @@ html, body {
   box-shadow: 0 0 24px oklch(0.6 0.08 250 / 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .card-glow::before {
