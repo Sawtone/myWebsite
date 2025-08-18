@@ -7,8 +7,6 @@ import JournalCard from "./JournalCard";
 import FileTreeCard from "./FileTreeCard";
 import JournalBackground from "./JournalBackground";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { randChoice } from "@/utils/arrayUtils";
-import { STICKERS } from "@/data/journalData";
 
 const BookLayout = () => {
   const layoutItems = useJournalLayout();
@@ -39,12 +37,6 @@ const BookLayout = () => {
         </div>
 
         <ThemeSwitcher />
-      </div>
-
-      <div className="fixed right-6 bottom-6 select-none opacity-90">
-        <div className="w-14 h-14 rounded-full bg-white/90 dark:bg-black/60 grid place-items-center shadow-md">
-          {randChoice(STICKERS)}
-        </div>
       </div>
     </div>
   );

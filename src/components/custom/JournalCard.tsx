@@ -5,6 +5,7 @@
 import React from "react";
 import { useTheme } from "next-themes";
 import type { CardData } from "@/data/journalData";
+import { useMounted } from "@/hooks/useMounted";
 
 interface JournalCardProps {
   card: CardData;
@@ -14,7 +15,12 @@ interface JournalCardProps {
 
 const JournalCard = ({ card, angle = 0, sticker }: JournalCardProps) => {
     const { theme } = useTheme();
-  
+    const mounted = useMounted();
+    
+    if (!mounted) {
+      return <div style={{ visibility: 'hidden' }}>...</div>; // 或者 return null;
+    }
+
     return (
     <div
       className="w-full h-full transition-transform duration-300 hover:scale-105 hover:-translate-y-1"

@@ -30,7 +30,7 @@ const dancingScript = Dancing_Script({
 
 export const metadata: Metadata = {
   title: "Sawtone",
-  description: "React + TailwindCSS + Next.js 手帐页面",
+  description: "Next.js + Shadcn/ui + TailwindCSS",
 };
 
 export default function RootLayout({
@@ -42,7 +42,7 @@ export default function RootLayout({
     <html lang="zh-CN" suppressHydrationWarning>
       <body
         className={`${indieFlower.variable} ${dancingScript.variable} 
-          ${geistSans.variable} ${geistMono.variable}bg-fixed`}
+          ${geistSans.variable} ${geistMono.variable} bg-fixed`}
         style={{
           backgroundRepeat: 'repeat',
           backgroundAttachment: 'fixed',
