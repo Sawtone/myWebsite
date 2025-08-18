@@ -4,14 +4,13 @@
 
 import React from "react";
 import { useTheme } from "next-themes";
+import { useMounted } from "@/hooks/useMounted";
+
 
 const ThemeSwitcher = () => {
+  const mounted = useMounted();
   const { theme, setTheme } = useTheme();
-
-  // 避免 Hydration Error
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-
+  
   if (!mounted) {
     return null;
   }

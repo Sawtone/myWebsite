@@ -4,8 +4,10 @@
 
 import React from "react";
 import { useTheme } from "next-themes";
+import { useMounted } from "@/hooks/useMounted";
 
 const JournalBackground = () => {
+  const mounted = useMounted();
   const { theme } = useTheme();
 
   // 使用CSS渐变定义网格图案
@@ -15,6 +17,10 @@ const JournalBackground = () => {
   // 基础背景渐变
   const lightBaseBg = `linear-gradient(180deg, #FFF9F1 0%, #F7F3EA 40%, #F2EDE3 100%)`;
   const darkBaseBg = `radial-gradient(800px 500px at 10% 20%, rgba(99,102,241,0.12), transparent), radial-gradient(600px 400px at 90% 80%, rgba(236,72,153,0.06), transparent), #020617`;
+
+  if (!mounted) {
+    return <div style={{ visibility: 'hidden' }}>...</div>; // 或者 return null;
+  }
 
   return (
     <div
